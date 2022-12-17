@@ -22,9 +22,11 @@ export default function SignIn() {
             </p>
           </div>
           <div className="flex flex-col gap-5 justify-center">
-            <button className="bg-green-800 text-xl w-3/5 h-12 rounded-lg">
-              Sign In to Slack
-            </button>
+            <Link href={"/id"}>
+              <button className="bg-green-800 text-xl w-3/5 h-12 rounded-lg">
+                Sign In to Slack
+              </button>
+            </Link>
             <p className="text-stone-300 f text-md">
               Well take you to your web browser to sign and then <br />
               bring you back here.
