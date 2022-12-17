@@ -5,8 +5,8 @@ import profile from "../../public/profile.svg";
 
 export default function Navigation() {
   return (
-    <div className="bg-Navigationn p-1 flex justify-between items-center px-3">
-      <div className="flex w-full pl-48 gap-7">
+    <div className="bg-Navigation p-1 flex justify-between items-center px-3">
+      <div className="flex w-full pl-52 gap-7">
         <Image src={History} alt="history" />
         <input
           type="text"

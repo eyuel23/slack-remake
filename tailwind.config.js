@@ -8,11 +8,12 @@ module.exports = {
     extend: {
       colors: {
         slack: "#4a154c",
-        Navigationn: "#301134",
+        Navigation: "#301134",
         search: "#5e3f5f",
       },
       fontFamily: {
         Inter: "Inter",
+        Lato: "Lato",
       },
     },
   },
