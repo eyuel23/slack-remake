@@ -5,7 +5,7 @@ import option from "../../public/option.svg";
 
 export default function WorkSpace() {
   return (
-    <div className="min-h-screen bg-slack w-[18.5%] text-white font-Lato">
+    <div className="min-h-screen bg-Workspace w-[18.5%] text-white font-Lato">
       <div className="flex items-center justify-between px-5 border-y-[0.1px] border-stone-500 py-2">
         <h1 className="text-xl ">Team Tigray</h1>
         <Image src={Write} alt="write" />
@@ -22,7 +22,7 @@ export default function WorkSpace() {
           <li># web-app</li>
           <li>+ Add Channels</li>
         </ul>
-        <ul>
+        <ul className="flex flex-col gap-1">
           <li>▼ Direct message</li>
           <li>😳 eyuel mulugeta</li>
           <li className="text-white">+ Add Teammates</li>
