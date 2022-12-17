@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        slack: "#4a154c",
+      },
+      fontFamily: {
+        Inter: "Inter",
+      },
+    },
   },
   plugins: [],
 };
