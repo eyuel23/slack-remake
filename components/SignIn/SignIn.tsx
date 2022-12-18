@@ -2,11 +2,18 @@ import slack from "../../public/slackIcon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import slackWorld from "../../public/slackWorld.webp";
-
+import "firebase/auth";
+import { auth } from "../../utils/firebase";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 export default function SignIn() {
-  const signInWithGoogle = () => {
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // auth.signInWithPopup(provider);
+  const googleProvider = new GoogleAuthProvider();
+  const GoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log(result.user);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section className="bg-slack min-h-screen flex justify-between items-center text-white font-Inter">
@@ -28,7 +35,7 @@ export default function SignIn() {
           <div className="flex flex-col gap-5 justify-center">
             <button
               className="bg-green-800 text-xl w-3/5 h-12 rounded-lg"
-              onClick={signInWithGoogle}
+              onClick={GoogleLogin}
             >
               Sign In to Slack
             </button>
