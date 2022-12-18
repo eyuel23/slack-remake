@@ -8,11 +8,11 @@ import at from "../../public/icon2.svg";
 
 export default function Input() {
   return (
-    <div className="rounded-lg border-2 m-5 overflow-hidden">
+    <div className="rounded-lg border-2 m-5 overflow-hidden shadow-lg">
       <input
         type="text"
         placeholder="Make a note of something"
-        className="h-20 text-lg w-full font-light"
+        className="h-20 text-lg w-full font-light pl-3"
       />
       <div className="flex justify-between items-center p-2 bg-stone-100">
         <div className="flex gap-2 pl-2">
