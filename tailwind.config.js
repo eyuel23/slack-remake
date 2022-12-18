@@ -11,6 +11,7 @@ module.exports = {
         Navigation: "#301134",
         search: "#5e3f5f",
         Workspace: "#3f0e40",
+        text: "rgba(255, 255, 255, 0.7) ",
       },
       fontFamily: {
         Inter: "Inter",

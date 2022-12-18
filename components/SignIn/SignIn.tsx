@@ -4,6 +4,10 @@ import Link from "next/link";
 import slackWorld from "../../public/slackWorld.webp";
 
 export default function SignIn() {
+  const signInWithGoogle = () => {
+    // const provider = new firebase.auth.GoogleAuthProvider();
+    // auth.signInWithPopup(provider);
+  };
   return (
     <section className="bg-slack min-h-screen flex justify-between items-center text-white font-Inter">
       <div className="flex flex-col justify-center gap-28 pt-16 pl-32">
@@ -22,11 +26,13 @@ export default function SignIn() {
             </p>
           </div>
           <div className="flex flex-col gap-5 justify-center">
-            <Link href={"/id"}>
-              <button className="bg-green-800 text-xl w-3/5 h-12 rounded-lg">
-                Sign In to Slack
-              </button>
-            </Link>
+            <button
+              className="bg-green-800 text-xl w-3/5 h-12 rounded-lg"
+              onClick={signInWithGoogle}
+            >
+              Sign In to Slack
+            </button>
+
             <p className="text-stone-300 f text-md">
               Well take you to your web browser to sign and then <br />
               bring you back here.

@@ -7,7 +7,7 @@ export default function index() {
   return (
     <section className="flex flex-col min-h-screen">
       <Navigation />
-      <div className="flex">
+      <div className="flex h-full">
         <WorkSpace />
         <Main />
       </div>

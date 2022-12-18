@@ -8,7 +8,7 @@ import at from "../../public/icon2.svg";
 
 export default function Input() {
   return (
-    <div className="rounded-lg border-2 m-5 overflow-hidden shadow-lg">
+    <div className="rounded-lg border-2 m-5 overflow-hidden shadow-md">
       <input
         type="text"
         placeholder="Make a note of something"
