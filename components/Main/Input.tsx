@@ -4,10 +4,14 @@ import send from "../../public/send.svg";
 import mic from "../../public/icon4.svg";
 import video from "../../public/icon3.svg";
 import at from "../../public/icon2.svg";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  Timestamp,
+} from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "firebase/compat";
 
 export default function Input() {
   const [formValue, setFormValue] = useState("");
@@ -19,7 +23,8 @@ export default function Input() {
     await addDoc(messagesRef, {
       text: formValue,
       user: currentUser,
-      createdAt: "4:40",
+      date: Timestamp.now(),
+      createdAt: serverTimestamp(),
     });
     setFormValue("");
   };

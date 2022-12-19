@@ -7,7 +7,6 @@ import { auth } from "../../utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { stringify } from "querystring";
 export default function SignIn() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();

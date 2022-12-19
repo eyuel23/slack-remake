@@ -7,11 +7,12 @@ import { useEffect, useState } from "react";
 interface messages {
   id: string;
   text: string;
-  createdAt: string;
+  user: string;
+  createdAt: any;
+  date: string;
 }
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
-  const [done, setDone] = useState(false);
   const messagesRef = collection(db, "messages");
   useEffect(() => {
     const getMessages = async () => {
@@ -20,13 +21,14 @@ export default function Messages() {
         ...doc.data(),
         id: doc.id,
       }));
-      const final = result;
-      setMessages(result);
+      const final = result.sort((a: any, b: any) => b[1].date - a[1].date);
+      console.log(final);
+      setMessages(final);
     };
     getMessages();
   }, [messagesRef]);
   return (
-    <div className="flex flex-col h-3/5 justify-between overflow-y-scroll">
+    <div className="flex flex-col h-[31rem] justify-between overflow-y-scroll">
       <p className="text-sm font-light p-5 text-center">
         <span className="font-normal"> This space is just for you.</span> Jot
         down notes, list your to-dos or, keep links and files handy. you can
@@ -43,7 +45,7 @@ export default function Messages() {
               id={res.id}
               name={res.user}
               text={res.text}
-              time={"her"}
+              time={res.date.seconds}
             />
           );
         })}
