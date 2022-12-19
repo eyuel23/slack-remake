@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 interface messages {
   id: string;
   text: string;
-  createdAt: { nanoseconds: number; seconds: number };
+  createdAt: string;
 }
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
@@ -20,14 +20,13 @@ export default function Messages() {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(result);
-      console.log(data);
+      const final = result;
       setMessages(result);
     };
     getMessages();
-  }, []);
+  }, [messagesRef]);
   return (
-    <div className="flex flex-col h-3/5 justify-between">
+    <div className="flex flex-col h-3/5 justify-between overflow-y-scroll">
       <p className="text-sm font-light p-5 text-center">
         <span className="font-normal"> This space is just for you.</span> Jot
         down notes, list your to-dos or, keep links and files handy. you can
@@ -42,9 +41,9 @@ export default function Messages() {
             <Message
               key={res.id}
               id={res.id}
-              name={res.id}
+              name={res.user}
               text={res.text}
-              time={"here"}
+              time={"her"}
             />
           );
         })}
