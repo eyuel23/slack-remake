@@ -12,7 +12,8 @@ export default function SignIn() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
   const googleProvider = new GoogleAuthProvider();
-  const GoogleLogin = async () => {
+  const GoogleLogin = async (e: any) => {
+    e.preventDefault();
     let userName;
     try {
       const result = await signInWithPopup(auth, googleProvider);

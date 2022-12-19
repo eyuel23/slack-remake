@@ -1,10 +1,31 @@
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 import Message from "./Message";
-
+import { db } from "../../utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+interface messages {
+  id: string;
+  text: string;
+  createdAt: { nanoseconds: number; seconds: number };
+}
 export default function Messages() {
-  const messages = [
-    { id: 1, name: "eyuel mulugeta", message: "this is it" },
-    { id: 2, name: "eyuel mulugeta", message: "this is it" },
-  ];
+  const [messages, setMessages] = useState<messages[]>([]);
+  const [done, setDone] = useState(false);
+  const messagesRef = collection(db, "messages");
+  useEffect(() => {
+    const getMessages = async () => {
+      const data = await getDocs(messagesRef);
+      const result: any = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      console.log(result);
+      console.log(data);
+      setMessages(result);
+    };
+    getMessages();
+  }, []);
   return (
     <div className="flex flex-col h-3/5 justify-between">
       <p className="text-sm font-light p-5 text-center">
@@ -16,8 +37,17 @@ export default function Messages() {
         both sides of the conversation.
       </p>
       <div className="flex flex-col">
-        <Message />
-        <Message />
+        {messages.map((res) => {
+          return (
+            <Message
+              key={res.id}
+              id={res.id}
+              name={res.id}
+              text={res.text}
+              time={"here"}
+            />
+          );
+        })}
       </div>
     </div>
   );

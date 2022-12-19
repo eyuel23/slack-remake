@@ -1,7 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import profile from "../../public/profile.svg";
-export default function Message() {
+interface props {
+  id: string;
+  name: string;
+  text: string;
+  time: string;
+}
+export default function Message({ id, name, text, time }: props) {
   return (
     <div className="flex gap-2 items-center px-5 py-2">
       <Image
@@ -12,8 +18,10 @@ export default function Message() {
         className="rounded-md"
       />
       <div className="">
-        <h1 className="font-semibold">eyuelmulugeta05</h1>
-        <div className="font-light">hey</div>
+        <h1 className="font-semibold">
+          {name} <span>{time}</span>
+        </h1>
+        <div className="font-light">{text}</div>
       </div>
     </div>
   );
