@@ -5,16 +5,26 @@ import slackWorld from "../../public/slackWorld.webp";
 import "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { stringify } from "querystring";
 export default function SignIn() {
+  const [user, loading] = useAuthState(auth);
+  const route = useRouter();
   const googleProvider = new GoogleAuthProvider();
   const GoogleLogin = async () => {
+    let userName;
     try {
       const result = await signInWithPopup(auth, googleProvider);
       console.log(result.user);
+      userName = result.user.displayName;
     } catch (error) {
       console.log(error);
     }
+
+    if (user) route.push(`/${userName}`);
   };
+
   return (
     <section className="bg-slack min-h-screen flex justify-between items-center text-white font-Inter">
       <div className="flex flex-col justify-center gap-28 pt-16 pl-32">
