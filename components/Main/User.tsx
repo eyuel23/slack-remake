@@ -9,7 +9,7 @@ export default function User() {
         alt="profile"
         width={30}
         height={30}
-        className="rounded-md"
+        className="rounded-md h-auto w-auto"
       />
       <h1>eyuelmulugeta</h1>
     </div>

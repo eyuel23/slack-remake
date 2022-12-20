@@ -14,6 +14,11 @@ interface messages {
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
   const messagesRef = collection(db, "messages");
+  function secondsToHoursMinutes(seconds: number) {
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    return hours + " : " + minutes;
+  }
   useEffect(() => {
     const getMessages = async () => {
       const data = await getDocs(messagesRef);
@@ -21,12 +26,13 @@ export default function Messages() {
         ...doc.data(),
         id: doc.id,
       }));
-      const final = result.sort((a: any, b: any) => b[1].date - a[1].date);
-      console.log(final);
-      setMessages(final);
+      console.log(result);
+      setMessages(result);
     };
-    getMessages();
-  }, [messagesRef]);
+    return () => {
+      getMessages();
+    };
+  }, []);
   return (
     <div className="flex flex-col h-[31rem] justify-between overflow-y-scroll">
       <p className="text-sm font-light p-5 text-center">
@@ -45,7 +51,7 @@ export default function Messages() {
               id={res.id}
               name={res.user}
               text={res.text}
-              time={res.date.seconds}
+              time={res.date}
             />
           );
         })}

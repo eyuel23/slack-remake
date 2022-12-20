@@ -18,16 +18,22 @@ export default function Input() {
   const messagesRef = collection(db, "messages");
   const user = useAuthState(auth);
   const sendMessage = async (e: any) => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     e.preventDefault();
     const currentUser = user[0]?.displayName;
     await addDoc(messagesRef, {
       text: formValue,
       user: currentUser,
-      date: Timestamp.now(),
+      date: timeString,
       createdAt: serverTimestamp(),
     });
     setFormValue("");
   };
+
   const inputHandler = (e: any) => {
     e.preventDefault();
     setFormValue(e.target.value);
@@ -46,16 +52,34 @@ export default function Input() {
         <div className="flex gap-2 pl-2">
           <div>+</div>
           <div className="flex border-x-2 gap-2 px-2">
-            <Image src={video} alt="" width={20} height={20} />
-            <Image src={mic} alt="" width={20} height={20} />
+            <Image
+              src={video}
+              alt=""
+              width={20}
+              height={20}
+              className="h-auto w-auto"
+            />
+            <Image
+              src={mic}
+              alt=""
+              width={20}
+              height={20}
+              className="h-auto w-auto"
+            />
           </div>
           <div className="flex gap-2">
-            <Image src={at} alt="" width={20} height={20} />
+            <Image
+              src={at}
+              alt=""
+              width={20}
+              height={20}
+              className="h-auto w-auto"
+            />
             <div className="text-lg">Aa</div>
           </div>
         </div>
         <button onClick={sendMessage}>
-          <Image src={send} alt="send" />
+          <Image src={send} alt="send" className="h-auto w-auto" />
         </button>
       </div>
     </div>

@@ -31,7 +31,13 @@ export default function SignIn() {
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-10">
             <div className="flex items-center gap-5">
-              <Image src={slack} alt="slack" width={50} height={50} />
+              <Image
+                src={slack}
+                alt="slack"
+                width={50}
+                height={50}
+                priority={true}
+              />
               <h1 className="text-5xl font-semibold">slack</h1>
             </div>{" "}
             <p className="text-6xl font-semibold">

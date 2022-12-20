@@ -15,11 +15,12 @@ export default function Message({ id, name, text, time }: props) {
         alt="profile"
         width={36}
         height={45}
-        className="rounded-md"
+        className="rounded-md h-auto w-auto"
       />
       <div className="">
         <h1 className="font-semibold">
-          {name} <span>{time}</span>
+          {name}{" "}
+          <span className="font-normal text-sm text-gray-500">{time}</span>
         </h1>
         <div className="font-light">{text}</div>
       </div>

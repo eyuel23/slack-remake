@@ -7,7 +7,7 @@ export default function Navigation() {
   return (
     <div className="bg-Navigation p-1 flex justify-between items-center px-3">
       <div className="flex w-full pl-52 gap-7">
-        <Image src={History} alt="history" />
+        <Image src={History} alt="history" className="h-auto w-auto" />
         <input
           type="text"
           placeholder="🔍 Search Team Tigray"
