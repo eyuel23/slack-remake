@@ -14,9 +14,9 @@ interface messages {
 }
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
-  const messagesRef = collection(db, "messages");
   const fetch = useSelector((state: any) => state.fetch.fetch);
   useEffect(() => {
+    const messagesRef = collection(db, "messages");
     const getMessages = async () => {
       const data = await getDocs(messagesRef);
       const result: any = data.docs.map((doc) => ({
