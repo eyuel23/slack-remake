@@ -4,6 +4,7 @@ import Message from "./Message";
 import { db } from "../../utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 interface messages {
   id: string;
   text: string;
@@ -14,11 +15,7 @@ interface messages {
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
   const messagesRef = collection(db, "messages");
-  function secondsToHoursMinutes(seconds: number) {
-    var hours = Math.floor(seconds / 3600);
-    var minutes = Math.floor((seconds % 3600) / 60);
-    return hours + " : " + minutes;
-  }
+  const fetch = useSelector((state: any) => state.fetch.fetch);
   useEffect(() => {
     const getMessages = async () => {
       const data = await getDocs(messagesRef);
@@ -32,7 +29,7 @@ export default function Messages() {
     return () => {
       getMessages();
     };
-  }, []);
+  }, [fetch]);
   return (
     <div className="flex flex-col h-[31rem] justify-between overflow-y-scroll">
       <p className="text-sm font-light p-5 text-center">

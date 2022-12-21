@@ -12,12 +12,16 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchactions } from "../../store";
 
 export default function Input() {
   const [formValue, setFormValue] = useState("");
+  const dispatch = useDispatch();
   const messagesRef = collection(db, "messages");
   const user = useAuthState(auth);
   const sendMessage = async (e: any) => {
+    dispatch(fetchactions.changeFetch());
     const now = new Date();
     const timeString = now.toLocaleTimeString([], {
       hour: "2-digit",
