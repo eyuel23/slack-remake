@@ -49,6 +49,7 @@ export default function Input() {
           type="text"
           placeholder="Make a note of something"
           className="h-20 text-lg w-full font-light pl-3"
+          value={formValue}
           onChange={inputHandler}
         />
       </form>

@@ -23,8 +23,14 @@ export default function Messages() {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(result);
-      setMessages(result);
+      console.log(data, result);
+      const sortedArray = result.sort((a: any, b: any) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return dateB - dateA;
+      });
+
+      setMessages(sortedArray);
     };
     return () => {
       getMessages();
