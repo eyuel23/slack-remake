@@ -5,7 +5,7 @@ import WorkSpace from "../../components/Main/WorkSpace";
 
 export default function index() {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen overflow-hidden">
       <Navigation />
       <div className="flex h-full">
         <WorkSpace />
