@@ -27,12 +27,18 @@ export default function Input() {
       hour: "2-digit",
       minute: "2-digit",
     });
+    const dateString = now.toLocaleDateString([], {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+    const fullDate = `${dateString} ${timeString}`;
     e.preventDefault();
     const currentUser = user[0]?.displayName;
     await addDoc(messagesRef, {
       text: formValue,
       user: currentUser,
-      date: timeString,
+      date: fullDate,
       createdAt: serverTimestamp(),
     });
     setFormValue("");
@@ -57,34 +63,16 @@ export default function Input() {
         <div className="flex gap-2 pl-2">
           <div>+</div>
           <div className="flex border-x-2 gap-2 px-2">
-            <Image
-              src={video}
-              alt=""
-              width={20}
-              height={20}
-              className="h-auto w-auto"
-            />
-            <Image
-              src={mic}
-              alt=""
-              width={20}
-              height={20}
-              className="h-auto w-auto"
-            />
+            <Image src={video} alt="" width={20} height={20} />
+            <Image src={mic} alt="" width={20} height={20} />
           </div>
           <div className="flex gap-2">
-            <Image
-              src={at}
-              alt=""
-              width={20}
-              height={20}
-              className="h-auto w-auto"
-            />
+            <Image src={at} alt="" width={20} height={20} />
             <div className="text-lg">Aa</div>
           </div>
         </div>
         <button onClick={sendMessage}>
-          <Image src={send} alt="send" className="h-auto w-auto" />
+          <Image src={send} alt="send" />
         </button>
       </div>
     </div>

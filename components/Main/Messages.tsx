@@ -22,14 +22,12 @@ export default function Messages() {
       const result: any = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
+        createdAt: doc.data().createdAt,
       }));
       console.log(data, result);
       const sortedArray = result.sort((a: any, b: any) => {
-        const dateA = new Date(a.createdAt).getTime();
-        const dateB = new Date(b.createdAt).getTime();
-        return dateB - dateA;
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
       });
-
       setMessages(sortedArray);
     };
     return () => {
