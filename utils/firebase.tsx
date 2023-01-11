@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import * as firebase from "firebase/app";
 const firebaseConfig = {
-  apiKey: "AIzaSyDyB0JGpPElaau7nOQj5Pv6uNjF7wfpQp4",
-  authDomain: "slack-85328.firebaseapp.com",
-  projectId: "slack-85328",
-  storageBucket: "slack-85328.appspot.com",
-  messagingSenderId: "802991783991",
-  appId: "1:802991783991:web:3780bd9a1d62b6025fffb2",
-  measurementId: "G-6XEKMV89P1",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
