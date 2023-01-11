@@ -3,7 +3,7 @@ import "firebase/compat/firestore";
 import Message from "./Message";
 import { db } from "../../utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 interface messages {
   id: string;
@@ -15,6 +15,7 @@ interface messages {
 export default function Messages() {
   const [messages, setMessages] = useState<messages[]>([]);
   const fetch = useSelector((state: any) => state.fetch.fetch);
+  const dummy: any = useRef();
   useEffect(() => {
     const messagesRef = collection(db, "messages");
     const getMessages = async () => {
@@ -29,6 +30,7 @@ export default function Messages() {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
       });
       setMessages(sortedArray);
+      dummy.current.scrollIntoView({ behavior: "smooth" });
     };
     return () => {
       getMessages();
@@ -45,7 +47,7 @@ export default function Messages() {
         both sides of the conversation.
       </p>
       <div className="flex flex-col">
-        {messages.map((res) => {
+        {messages.map((res, index) => {
           return (
             <Message
               key={res.id}
@@ -56,6 +58,7 @@ export default function Messages() {
             />
           );
         })}
+        <span ref={dummy}></span>
       </div>
     </div>
   );
