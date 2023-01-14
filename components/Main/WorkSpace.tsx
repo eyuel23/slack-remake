@@ -5,7 +5,7 @@ import option from "../../public/option.svg";
 
 export default function WorkSpace() {
   return (
-    <div className="min-h-screen bg-Workspace w-[18.5%] text-white font-Lato hidden sm:block">
+    <div className=" self-stretch bg-Workspace w-[18.5%] text-white font-Lato hidden sm:block">
       <div className="flex items-center justify-between px-5 border-y-[0.1px] border-stone-500 py-2">
         <h1 className="text-xl ">
           Team Tigray<span className="text-sm"> ▽</span>

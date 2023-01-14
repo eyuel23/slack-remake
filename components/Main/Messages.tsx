@@ -46,7 +46,7 @@ export default function Messages() {
         <br />
         both sides of the conversation.
       </p>
-      <div className="flex flex-col">
+      <div className="flex flex-col h-full justify-end">
         {messages.map((res, index) => {
           return (
             <Message
@@ -58,8 +58,8 @@ export default function Messages() {
             />
           );
         })}
-        <span ref={dummy}></span>
       </div>
+      <span ref={dummy}></span>
     </div>
   );
 }

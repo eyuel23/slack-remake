@@ -8,6 +8,7 @@ interface props {
   time: string;
 }
 export default function Message({ id, name, text, time }: props) {
+  let exactTime = time.substring(time.length - 8);
   return (
     <div className="flex gap-2 items-center px-5 py-2">
       <Image
@@ -20,7 +21,7 @@ export default function Message({ id, name, text, time }: props) {
       <div className="">
         <h1 className="font-semibold">
           {name}{" "}
-          <span className="font-normal text-xs text-gray-500">{time}</span>
+          <span className="font-normal text-xs text-gray-500">{exactTime}</span>
         </h1>
         <div className="font-light">{text}</div>
       </div>
